@@ -1,0 +1,91 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel=stylesheet href='include/hoj.css' type='text/css'>
+</head>
+<body>
+<center>
+<div style="width:90%; text-align:left">
+<img src="image/logo.png"/>
+</div>
+<table width=96%> 
+	<tr align="center" class='hd' valign="top">
+				<th><a href="faqs.php">F.A.Qs</a></th>
+		<th><a href="./">Home</a></th>
+		<th><a href="./problemset.php">ProblemSet</a></th>
+		<th><a href="./status.php">Status</a></th>
+		<th><a href="./ranklist.php">Ranklist</a></th>
+		<th><a href="./contest.php">Contest</a></th>
+		<th><a href=loginpage.php>Login</a></th><th><a href=registerpage.php>Register</a></th>		<th><a href="./donation.php"><font color=red>捐赠本站</font></a></th>
+	</tr>
+</table>
+</center>
+<center>
+<div class="notice">
+	<div>
+		<B>Notice:</B>开心刷题：）	</div>
+</div>
+</center>
+</div>
+
+<script type="text/javascript" src="include/wz_jsgraphics.js"></script>
+<script type="text/javascript" src="include/pie.js"></script>
+<title>User--hqztrue</title><center>
+<table id=statics width=70%>
+<caption>
+hqztrue--██████████████AFO██████████████</caption>
+<tr bgcolor=#D7EBFF><td width=15%>No.<td width=25% align=center>169<td width=70% align=center>Solved Problems List</tr>
+<tr bgcolor=#D7EBFF><td>Solved<td align=center><a href='status.php?user_id=hqztrue&jresult=4'>364</a>
+<td rowspan=14 align=center>
+<script language='javascript'>
+function p(id){document.write("<a href=problem.php?id="+id+">"+id+" </a>");}
+p(1000);p(1001);p(1002);p(1003);p(1005);p(1006);p(1007);p(1008);p(1009);p(1010);p(1011);p(1012);p(1013);p(1014);p(1015);p(1016);p(1018);p(1019);p(1021);p(1022);p(1023);p(1024);p(1025);p(1026);p(1027);p(1028);p(1030);p(1031);p(1032);p(1033);p(1034);p(1035);p(1036);p(1037);p(1038);p(1040);p(1041);p(1044);p(1046);p(1047);p(1049);p(1051);p(1052);p(1053);p(1057);p(1058);p(1059);p(1060);p(1061);p(1062);p(1067);p(1068);p(1069);p(1071);p(1074);p(1077);p(1078);p(1081);p(1082);p(1083);p(1086);p(1093);p(1094);p(1096);p(1150);p(1161);p(1162);p(1185);p(1187);p(1191);p(1192);p(1197);p(1198);p(1200);p(1202);p(1207);p(1208);p(1209);p(1211);p(1213);p(1226);p(1227);p(1231);p(1232);p(1233);p(1237);p(1240);p(1251);p(1257);p(1261);p(1263);p(1264);p(1266);p(1269);p(1294);p(1296);p(1301);p(1304);p(1406);p(1407);p(1411);p(1412);p(1413);p(1414);p(1415);p(1432);p(1433);p(1434);p(1435);p(1452);p(1453);p(1483);p(1486);p(1488);p(1491);p(1492);p(1493);p(1497);p(1500);p(1502);p(1503);p(1507);p(1562);p(1563);p(1564);p(1565);p(1566);p(1571);p(1572);p(1573);p(1575);p(1576);p(1584);p(1588);p(1590);p(1593);p(1594);p(1597);p(1598);p(1600);p(1601);p(1606);p(1611);p(1615);p(1625);p(1630);p(1633);p(1645);p(1646);p(1647);p(1654);p(1656);p(1662);p(1672);p(1673);p(1675);p(1676);p(1684);p(1686);p(1695);p(1698);p(1699);p(1702);p(1703);p(1704);p(1705);p(1707);p(1708);p(1716);p(1718);p(1720);p(1721);p(1726);p(1730);p(1737);p(1738);p(1739);p(1742);p(1743);p(1745);p(1746);p(1747);p(1748);p(1749);p(1750);p(1754);p(1758);p(1770);p(1776);p(1787);p(1790);p(1798);p(1800);p(1804);p(1807);p(1819);p(1820);p(1821);p(1826);p(1833);p(1834);p(1845);p(1853);p(1854);p(1856);p(1857);p(1859);p(1860);p(1861);p(1862);p(1863);p(1864);p(1876);p(1877);p(1878);p(1879);p(1880);p(1891);p(1898);p(1899);p(1901);p(1911);p(1915);p(1918);p(1927);p(1930);p(1932);p(1934);p(1941);p(1966);p(1968);p(1978);p(1984);p(1997);p(2001);p(2002);p(2003);p(2005);p(2006);p(2007);p(2014);p(2017);p(2038);p(2040);p(2048);p(2049);p(2056);p(2058);p(2059);p(2060);p(2062);p(2100);p(2111);p(2117);p(2119);p(2122);p(2128);p(2129);p(2131);p(2132);p(2133);p(2134);p(2136);p(2139);p(2142);p(2143);p(2144);p(2145);p(2153);p(2154);p(2156);p(2157);p(2158);p(2160);p(2165);p(2172);p(2186);p(2190);p(2196);p(2199);p(2200);p(2208);p(2227);p(2228);p(2229);p(2241);p(2242);p(2245);p(2252);p(2258);p(2282);p(2300);p(2301);p(2324);p(2325);p(2333);p(2423);p(2426);p(2434);p(2435);p(2441);p(2442);p(2456);p(2458);p(2459);p(2460);p(2463);p(2479);p(2542);p(2547);p(2588);p(2589);p(2591);p(2599);p(2618);p(2621);p(2626);p(2638);p(2648);p(2650);p(2653);p(2654);p(2656);p(2657);p(2659);p(2705);p(2707);p(2716);p(2729);p(2734);p(2735);p(2738);p(2739);p(2741);p(2743);p(2753);p(2754);p(2761);p(2780);p(2784);p(2786);p(2809);p(2816);p(2817);p(2818);p(2820);p(2870);p(2875);p(2876);p(2956);p(2961);p(2962);p(2963);p(2982);p(2986);p(2987);p(3038);p(3164);p(3198);p(3214);p(3237);p(3239);p(3437);p(3707);</script>
+</tr>
+<tr bgcolor=#D7EBFF><td>Submit<td align=center><a href='status.php?user_id=hqztrue'>1469</a></tr>
+<tr bgcolor=#D7EBFF><td>AC<td align=center><a href=status.php?user_id=hqztrue&jresult=4 >914</a></tr><tr bgcolor=#D7EBFF><td>PE<td align=center><a href=status.php?user_id=hqztrue&jresult=5 >8</a></tr><tr bgcolor=#D7EBFF><td>WA<td align=center><a href=status.php?user_id=hqztrue&jresult=6 >230</a></tr><tr bgcolor=#D7EBFF><td>TLE<td align=center><a href=status.php?user_id=hqztrue&jresult=7 >85</a></tr><tr bgcolor=#D7EBFF><td>MLE<td align=center><a href=status.php?user_id=hqztrue&jresult=8 >16</a></tr><tr bgcolor=#D7EBFF><td>OLE<td align=center><a href=status.php?user_id=hqztrue&jresult=9 >2</a></tr><tr bgcolor=#D7EBFF><td>RE<td align=center><a href=status.php?user_id=hqztrue&jresult=10 >107</a></tr><tr bgcolor=#D7EBFF><td>CE<td align=center><a href=status.php?user_id=hqztrue&jresult=11 >107</a></tr><tr id=pie bgcolor=#D7EBFF><td>Statistics<td><div id='PieDiv' style='position:relative;height:105px;width:120px;'></div></tr><script language="javascript">
+	var y= new Array ();
+	var x = new Array ();
+	var dt=document.getElementById("statics");
+	var data=dt.rows;
+	var n;
+	for(var i=3;dt.rows[i].id!="pie";i++){
+			n=dt.rows[i].cells[0];
+			n=n.innerText || n.textContent;
+			x.push(n);
+			n=dt.rows[i].cells[1].firstChild;
+			n=n.innerText || n.textContent;
+			//alert(n);
+			n=parseInt(n);
+			y.push(n);
+	}
+	var mypie=  new Pie("PieDiv");
+	mypie.drawPie(y,x);
+	//mypie.clearPie();
+
+</script> 
+
+
+<tr bgcolor=#D7EBFF><td>School:<td align=center>████████████</tr>
+<tr bgcolor=#D7EBFF><td>Email:<td align=center>hqztrue@sina.com</tr>
+</table>
+</center>
+﻿<br>
+
+<a href="./"><span class=red>HOME</span></a>
+<a href="javascript:history.go(-1)"><span class=red>Back</span></a>
+
+<hr>
+<center>
+	<div class="footer">
+			<a href=setlang.php?lang=ko>한국어</a>&nbsp;
+		<a href=setlang.php?lang=cn>中文</a>&nbsp;
+		<a href=setlang.php?lang=fa>فارسی</a>&nbsp;
+		<a href=setlang.php?lang=en>English</a>&nbsp;
+		<a href=setlang.php?lang=th>ไทย</a>
+	<br>		<div>版权所有 &copy;2008-2012 大视野在线测评 | <a href="http://www.miitbeian.gov.cn">湘ICP备13009380号</a> | <script src="http://s21.cnzz.com/stat.php?id=2982771&web_id=2982771" language="JavaScript"></script>
+</div>
+		<div>Based on opensource project <a href="http://hustoj.googlecode.com">hustoj</a>.</div>
+	</div>
+</center>
+</body>
+</html>
