@@ -180,6 +180,7 @@ int main()
 							u->next[2]=&f[_i][_j][_j1][_k][_l][_l1],u->v[2]=v;
 							u->act=u->next[0]?0:1;
 							//if (i==0&&j==2)u->act=2;
+							if (i==6&&j<=1&&l>2)u->act=2;
 						}
 	best=eval();
 	while (1){
@@ -188,7 +189,7 @@ int main()
 			i=rand()%7,j=rand()%3,j1=rand()%3,k=rand()%K,l=rand()%7,l1=rand()%4;
 			if (comp(k,l,l1)!=l1)continue;
 			u=&f[i][j][j1][k][l][l1];
-			u->act^=1;
+			if (u->act<=1)u->act^=1;
 			break;
 		}
 		double cur=eval();
