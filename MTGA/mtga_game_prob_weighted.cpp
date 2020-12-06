@@ -9,7 +9,7 @@ using namespace std;
 #define N 105
 double f[N][N],w[N];
 int n,m;
-const double G=800,p=0.6,pack=150,draft_pack=0.4*pack,randG=p*G+(1-p)*20./150*1000,ICR=0.15*G;  //draft_pack=0.5*pack*6/(6+2)
+const double G=800,collection_p=0.6,pack=150,draft_pack=0.4*pack,randG=collection_p*G+(1-collection_p)*20./150*1000,ICR=0.15*G,p=0.5,dollar=200;  //draft_pack=0.5*pack*6/(6+2)
 double basic_reward,entry;
 void constructed(){
 	n=7;m=3;
@@ -43,24 +43,44 @@ void sealed(){
 void competitive_metagame(){
 	n=7;m=1;
 	w[0]=500;w[1]=1000;w[2]=2500;w[3]=5000;w[4]=7500;w[5]=13000;w[6]=24000;w[7]=35000;
+	entry=2000;
 }
 void cube(){
 	n=7;m=3;
 	w[0]=randG;w[1]=500+randG;w[2]=1000+randG;w[3]=2000+randG;w[4]=3000+randG;w[5]=4000+2*randG;w[6]=5000+2*randG;w[7]=6000+2*randG;
 }
+void arena_open_day2(){
+	n=7;m=2;
+	w[0]=0;w[1]=2000;w[2]=4000;w[3]=6000;w[4]=10000;w[5]=20000;w[6]=1000*dollar;w[7]=2000*dollar;
+	entry=0;
+}
+void arena_open(){
+	n=7;m=3;
+	w[0]=0;w[1]=0;w[2]=0;w[3]=400;w[4]=800;w[5]=1200;w[6]=1600;w[7]=2000+23250;
+	entry=3000;
+}
+void traditional_draft_new(){
+	n=3;
+	w[0]=pack*1;w[1]=pack*1;w[2]=1000+pack*4;w[3]=3000+pack*6;
+	basic_reward=3*draft_pack; entry=1500;
+	double s=(1-p)*(1-p)*(1-p)*w[0]+3*(1-p)*(1-p)*p*w[1]+3*(1-p)*p*p*w[2]+p*p*p*w[3];
+	printf("E[reward]=%.8lf gross=%.8lf net=%.8lf\n",s,s+basic_reward,s+basic_reward-entry);
+}
 int main()
 {
 	//freopen("1.in","r",stdin);
 	//freopen("1.out","w",stdout);
-	double p=0.5;
 	//constructed();
 	//traditional_constructed();
 	//quick_draft();
 	//traditional_draft();
-	premier_draft();
+	//premier_draft();
 	//sealed();
 	//competitive_metagame();
 	//cube();
+	//arena_open_day2();
+	arena_open();
+	//traditional_draft_new(); return 0;
 	//for (int i=0;i<=7;++i)printf("%d %.5lf\n",i,w[i]);
 	f[0][0]=1;
 	for (int I=0;I<=n+m-2;++I)
