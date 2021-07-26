@@ -7,16 +7,17 @@
 #include<algorithm>
 using namespace std;
 const int K=4,L=5;
-const double pack=150,draft_pack=0.4*pack,premier_entry=1500,quick_entry=750;
+const double pack=150,draft_pack=0.45*pack,premier_entry=1500,quick_entry=750;
 double w[]={50+pack*1,100+pack*1,250+pack*2,1000+pack*2,1400+pack*3,1600+pack*4,1800+pack*5,2200+pack*6},  //premier
 	w1[]={50+pack*1.2,100+pack*1.22,200+pack*1.24,300+pack*1.26,450+pack*1.3,650+pack*1.35,850+pack*1.4,950+pack*2};  //quick
+double res;
 struct node{
 	double v[3];  //premier W/L, quick L
-	node *next[3];
+	//node *next[3];
 	int act;  //0:premier W/L, 1:quick L, 2:premier L
 };
 node f[7][3][3][K][L+1][4];  //premier W/L, quick L, tier, tier bar, 3-game protection
-double g[105][7][3][3][K][L+1][4],h[7][3][3][K][L+1][4],_h[7][3][3][K][L+1][4],best,p=0.6;
+double g[105][7][3][3][K][L+1][4],h[7][3][3][K][L+1][4],_h[7][3][3][K][L+1][4],best,p=0.6;  //p: winrate
 inline int comp(int k,int l,int l1){  //compress state
 	if (k==0)return 0;
 	if (l>=l1||(l==1||l==2)&&l1==3)return 0;
@@ -56,7 +57,7 @@ inline void move2(int i,int j,int j1,int k,int l,int l1,int &_i,int &_j,int &_j1
 double eval(){
 	fill_n(&h[0][0][0][0][0][0],sizeof(h)/sizeof(double),0.0);
 	h[0][0][0][0][0][0]=1;
-	for (int T=1;T<=1000;++T){
+	for (int T=1;T<=1000;++T){  //markov, converge
 		fill_n(&_h[0][0][0][0][0][0],sizeof(h)/sizeof(double),0.0);
 		for (int i=0;i<7;++i)
 			for (int j=0;j<3;++j)
@@ -99,7 +100,7 @@ double eval(){
 		//printf("T=%d diff=%.8lf %.8lf\n",T,diff,p1);
 		memcpy(h,_h,sizeof(h));
 	}
-	double ans=0;
+	double ans=0,s=0;
 	for (int i=0;i<7;++i)
 		for (int j=0;j<3;++j)
 			for (int j1=0;j1<3;++j1)
@@ -115,6 +116,7 @@ double eval(){
 								ans+=t*p*u->v[0];
 								move1(i,j,j1,k,l,l1,_i,_j,_j1,_k,_l,_l1,v);
 								ans+=t*(1-p)*u->v[1];
+								s+=t;
 							}
 							else if (u->act==1){
 								move2(i,j,j1,k,l,l1,_i,_j,_j1,_k,_l,_l1,v);
@@ -125,6 +127,8 @@ double eval(){
 								ans+=t*u->v[1];
 							}
 						}
+	res=ans/s;
+	//if (flag)printf("eval %.8lf\n",res);  //don't count concede
 	return ans;
 }
 /*double eval1(){
@@ -156,37 +160,52 @@ double eval(){
 								}
 							}
 }*/
-int main()
-{
-	//freopen("1.in","r",stdin);
-	//freopen("1.out","w",stdout);
+double calc(bool flag=1){
 	srand(time(0));
 	for (int i=0;i<=7;++i)w[i]+=draft_pack*3-premier_entry,w1[i]+=draft_pack*3-quick_entry;
-	for (int i=0;i<7;++i)
-		for (int j=0;j<3;++j)
-			for (int j1=0;j1<3;++j1)
-				for (int k=0;k<K;++k)
-					for (int l=0;l<=L;++l)
-						for (int l1=0;l1<4;++l1){
+	for (int i=0;i<7;++i)  //premier W
+		for (int j=0;j<3;++j)  //premier L
+			for (int j1=0;j1<3;++j1)  //quick L
+				for (int k=0;k<K;++k)  //tier
+					for (int l=0;l<=L;++l)  //tier bar
+						for (int l1=0;l1<4;++l1){  //3-game protection
 							if (comp(k,l,l1)!=l1)continue;
 							node *u=&f[i][j][j1][k][l][l1];
 							int _i,_j,_j1,_k,_l,_l1; double v;
 							move0(i,j,j1,k,l,l1,_i,_j,_j1,_k,_l,_l1,v);
-							if (_k>=K)u->next[0]=0;
-							else u->next[0]=&f[_i][_j][_j1][_k][_l][_l1],u->v[0]=v;
+							if (_k>=K)u->act=1;  //u->next[0]=0;
+							else u->act=0,u->v[0]=v;  //u->next[0]=&f[_i][_j][_j1][_k][_l][_l1]
 							move1(i,j,j1,k,l,l1,_i,_j,_j1,_k,_l,_l1,v);
-							u->next[1]=&f[_i][_j][_j1][_k][_l][_l1],u->v[1]=v;
+							u->v[1]=v;  //u->next[1]=&f[_i][_j][_j1][_k][_l][_l1]
 							move2(i,j,j1,k,l,l1,_i,_j,_j1,_k,_l,_l1,v);
-							u->next[2]=&f[_i][_j][_j1][_k][_l][_l1],u->v[2]=v;
-							u->act=u->next[0]?0:1;
+							u->v[2]=v;  //u->next[2]=&f[_i][_j][_j1][_k][_l][_l1]
+							//u->act=u->next[0]?0:1;
 							//if (i==0&&j==2)u->act=2;
-							if (i==6&&j<=1&&l>2)u->act=2;
+							//if (i==6&&j<=0&&l>2)u->act=2;
+							//if (i==6&&j<=1&&l>3)u->act=2;
+							//if (i==6&&j<=0&&l>2)u->act=2;
+							//if (i==6&&j<=0&&l>2)u->act=2;  //30.056
+							//if (i==6&&j<=0&&l>1)u->act=2;  //30.061
+							//if (i==6&&j<=0&&l>0)u->act=2;  //30.062
+							//if (i==6&&j<=0&&(l>1||l>0&&l1<=1))u->act=2;  //30.0611
+							if (i==6&&j<=0&&l>0)u->act=2;
+							if ((i==5||i==4||i==3)&&j==0&&(k==1||k==2)&&l==4&&l1==0)u->act=1;
+							if (i==2&&j==0&&k==2&&l==4&&l1==0)u->act=1;
+							//if (i==0&&j==2&&k==2&&l==4&&l1==0)u->act=1;
+							//if (i==3&&j==0&&k==1&&l==3&&l1==0)u->act=1;
+							//if (i==4&&j==0&&(k==1||k==2)&&l==3&&l1==0)u->act=1;
+							//if (i==4&&j==0&&j1==0&&k==1&&l==4&&l1==0)u->act=1;
+							//if (i==5&&j==0&&j1==1&&k==1&&l==4)u->act=2;
 						}
 	best=eval();
-	while (1){
+	if (flag)printf("best=%.8lf\n",best);
+	if (flag)printf("res=%.8lf\n",res);
+	while (flag){
 		int i,j,j1,k,l,l1; node *u;
 		while (1){
-			i=rand()%7,j=rand()%3,j1=rand()%3,k=rand()%K,l=rand()%(L+1),l1=rand()%4;
+			//i=rand()%7,j=rand()%3,j1=rand()%3,k=rand()%K,l=rand()%(L+1),l1=rand()%4;
+			//i=rand()%7,j=0,j1=0,k=rand()%K,l=rand()%2+3,l1=0;
+			i=6,j=0,j1=rand()%3,k=rand()%K,l=rand()%(L+1),l1=rand()%4;
 			if (comp(k,l,l1)!=l1)continue;
 			u=&f[i][j][j1][k][l][l1];
 			if (u->act<=1){
@@ -195,13 +214,38 @@ int main()
 			}
 		}
 		double cur=eval();
-		printf("best=%.8lf E=%.8lf\n",best,cur);
-		if (cur>best)best=cur;
+		if (cur>best){
+			best=cur;
+			printf("best=%.8lf E=%.8lf\n",best,cur);
+			printf("---%d %d %d %d %d %d\n",i,j,j1,k,l,l1);
+		}
 		else {
 			u->act^=1;
 		}
 		//return 0;
 	}
+	return res;
+}
+void print(){
+	vector<double> a,b;
+	for (double p0=0.45;p0<0.76;p0+=0.01){
+		p=p0;
+		eval();
+		a.push_back(p0);
+		b.push_back(res);
+	}
+	int n=a.size();
+	freopen("data.txt","w",stdout);
+	for (int i=0;i<n;++i)printf("%.5lf%c",a[i],i==n-1?'\n':',');
+	for (int i=0;i<n;++i)printf("%.5lf%c",b[i],i==n-1?'\n':',');
+	fclose(stdout);
+}
+int main()
+{
+	//freopen("1.in","r",stdin);
+	//freopen("1.out","w",stdout);
+	calc(0);
+	print(); return 0;
 	system("pause");for (;;);
 	return 0;
 }
