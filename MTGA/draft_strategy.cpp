@@ -189,8 +189,8 @@ double calc(bool flag=1){
 							//if (i==6&&j<=0&&l>0)u->act=2;  //30.062
 							//if (i==6&&j<=0&&(l>1||l>0&&l1<=1))u->act=2;  //30.0611
 							if (i==6&&j<=0&&l>0)u->act=2;
-							if ((i==5||i==4||i==3)&&j==0&&(k==1||k==2)&&l==4&&l1==0)u->act=1;
-							if (i==2&&j==0&&k==2&&l==4&&l1==0)u->act=1;
+							if ((i==5||i==4||i==3)&&j==0&&(k==1||k==2)&&l==4)u->act=1;  //&&l1==0
+							if (i==2&&j==0&&k==2&&l==4)u->act=1;  //&&l1==0
 							//if (i==0&&j==2&&k==2&&l==4&&l1==0)u->act=1;
 							//if (i==3&&j==0&&k==1&&l==3&&l1==0)u->act=1;
 							//if (i==4&&j==0&&(k==1||k==2)&&l==3&&l1==0)u->act=1;
@@ -244,8 +244,8 @@ int main()
 {
 	//freopen("1.in","r",stdin);
 	//freopen("1.out","w",stdout);
-	calc(0);
-	print(); return 0;
+	calc();
+	//print(); return 0;
 	system("pause");for (;;);
 	return 0;
 }
