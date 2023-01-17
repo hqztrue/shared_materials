@@ -13,8 +13,8 @@ print(c)
 #print(rank)
 
 import matplotlib.pyplot as plt
-lang=['cpp','java','python3','golang']
-rank['python3']+=rank['python']
+lang=['cpp','java','python','golang']
+rank['python']+=rank['python3']
 #plt.hist([rank[s] for s in lang], 20, label=lang) #histtype='step'
 plt.hist([rank[s] for s in lang], 1000, histtype='step', cumulative=True, label=lang)
 plt.legend()
