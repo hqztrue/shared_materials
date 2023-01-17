@@ -10,16 +10,18 @@ def draw(name):
         rank[l].append(r)
 
     c=Counter(a)
-    print('total=',sum(c.values()))
+    print('total =',sum(c.values()))
     print(c)
     #print(rank)
 
     lang=['cpp','java','python','golang','javascript']
     rank['python']+=rank['python3']
     plt.figure()
-    plt.title(name)
+    plt.title(name.split('.')[0])
     #plt.hist([rank[s] for s in lang], 20, label=lang) #histtype='step'
     plt.hist([rank[s] for s in lang], 1000, histtype='step', cumulative=True, label=lang)
+    plt.xlabel('contest ranking')
+    plt.ylabel('#users')
     plt.legend()
     f.close()
 
