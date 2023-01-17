@@ -1,0 +1,10 @@
+total= 2915
+Counter({'cpp': 1327, 'java': 745, 'python3': 557, 'golang': 110, 'javascript': 70, 'c': 46, 'python': 22, 'csharp': 18, 'typescript': 7, 'rust': 6, 'kotlin': 4, 'php': 1, 'elixir': 1, 'swift': 1})
+total= 2478
+Counter({'cpp': 1164, 'java': 595, 'python3': 489, 'golang': 94, 'javascript': 56, 'c': 25, 'python': 22, 'csharp': 16, 'rust': 6, 'typescript': 5, 'kotlin': 3, 'php': 1, 'elixir': 1, 'swift': 1})
+total= 2056
+Counter({'cpp': 979, 'java': 459, 'python3': 435, 'golang': 79, 'javascript': 46, 'c': 17, 'csharp': 14, 'python': 13, 'typescript': 6, 'rust': 5, 'kotlin': 3})
+total= 1807
+Counter({'cpp': 946, 'java': 395, 'python3': 321, 'golang': 60, 'javascript': 37, 'c': 13, 'csharp': 12, 'python': 10, 'rust': 6, 'kotlin': 4, 'typescript': 3})
+
+
