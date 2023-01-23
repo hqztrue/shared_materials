@@ -1,5 +1,6 @@
 from collections import Counter,defaultdict
 import matplotlib.pyplot as plt
+import numpy as np
 def draw(name):
     f=open(name)
     rank=defaultdict(list)
@@ -8,7 +9,8 @@ def draw(name):
         l,r=s.split(',')[0],int(s.split(',')[1][1:])
         a.append(l)
         rank[l].append(r)
-
+    f.close()
+    
     c=Counter(a)
     print('total =',sum(c.values()))
     print(c)
@@ -23,10 +25,13 @@ def draw(name):
     plt.xlabel('contest ranking')
     plt.ylabel('#users')
     plt.legend()
-    f.close()
+    
+    #for s in lang: print(s,np.mean(rank[s]),np.std(rank[s]))
 
 draw("weekly-contest-326_lang_P1.txt")
 draw("weekly-contest-326_lang_P2.txt")
 draw("weekly-contest-326_lang_P3.txt")
 draw("weekly-contest-326_lang_P4.txt")
+#draw("weekly-contest-326_lang_P1_US.txt")
+#draw("weekly-contest-326_lang_P4_US.txt")
 plt.show()
